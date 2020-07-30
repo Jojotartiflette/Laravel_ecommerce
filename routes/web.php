@@ -13,20 +13,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// // Main page
-Route::get('/', 'HomeController@home')->name('home');
+//Main Page
+Route::get('/', 'HomeController@index')-> name('home');
 Route::get('/contact', 'HomeController@contact')->name('contact');
 
-// // Shop
+//Shop
 Route::get('/shop', 'HomeController@shop')->name('shop.index');
-Route::get('/shop/single-product', 'HomeController@product')->name('shop.show');
+Route::get('/shop/single-product', 'HomeController')->name('shop.show');
 
-// // Cart
+//Cart
 Route::get('/cart', 'HomeController@cart')->name('cart.index');
 
-// // Checkout
+//Checkout
 Route::get('/checkout', 'HomeController@checkout')->name('checkout.index');
 Route::get('/checkout/success', 'HomeController@success')->name('checkout.success');
 
-// // Orders
+//Orders
 Route::get('/orders', 'HomeController@orders')->name('orders');
