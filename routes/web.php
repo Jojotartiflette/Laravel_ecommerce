@@ -14,12 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Main Page
-Route::get('/', 'HomeController@index')-> name('home');
+Route::get('/', 'HomeController@home')-> name('home');
 Route::get('/contact', 'HomeController@contact')->name('contact');
 
 //Shop
-Route::get('/shop', 'HomeController@shop')->name('shop.index');
-Route::get('/shop/single-product', 'HomeController')->name('shop.show');
+Route::get('/shop', 'ShopController@index')->name('shop.index');
+Route::get('/shop/{product}', 'ShopController@show')->name('shop.show');
 
 //Cart
 Route::get('/cart', 'HomeController@cart')->name('cart.index');
