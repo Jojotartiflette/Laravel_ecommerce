@@ -30,3 +30,17 @@ Route::get('/checkout/success', 'HomeController@success')->name('checkout.succes
 
 //Orders
 Route::get('/orders', 'HomeController@orders')->name('orders');
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
+
+//Authentification
+Auth::routes();
+
+Route::get('/logout', function() {
+    auth()->logout();
+    Session()->flush();
+
+    return Redirect::to('/');
+})->name('logout');

@@ -34,31 +34,34 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav menu_nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">
-                                <i class="fas fa-user-plus"></i>
-                                Sign Up
-                            </a>
-                        </li>
-                        <li class="nav-item submenu dropdown">
-                            <a href="#" class="nav-link"
-                             aria-expanded="false">
-                                <i class="fas fa-sign-in-alt"></i>
-                                Login
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="{{ route('orders') }}">
-                                <i class="fas fa-truck"></i>
-                                Orders
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">
-                                <i class="fas fa-sign-out-alt"></i>
-                                Logout
-                            </a>
-                        </li>
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">
+                                    <i class="fas fa-user-plus"></i>
+                                    Sign Up
+                                </a>
+                            </li>
+                            <li class="nav-item submenu dropdown">
+                            <a href="{{ route('login') }}" class="nav-link"
+                                aria-expanded="false">
+                                    <i class="fas fa-sign-in-alt"></i>
+                                    Login
+                                </a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                            <a class="nav-link" href="{{ route('orders') }}">
+                                    <i class="fas fa-truck"></i>
+                                    Orders
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('logout') }}">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        @endguest
                         <li class="nav-item">
                         <a class="nav-link" href="{{ route('cart.index') }}">
                                 <i class="fas fa-shopping-cart"></i>
