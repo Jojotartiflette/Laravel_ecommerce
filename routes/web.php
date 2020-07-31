@@ -22,11 +22,15 @@ Route::get('/shop', 'ShopController@index')->name('shop.index');
 Route::get('/shop/{product}', 'ShopController@show')->name('shop.show');
 
 //Cart
-Route::get('/cart', 'HomeController@cart')->name('cart.index');
+Route::get('/cart', 'CartController@index')->name('cart.index');
+Route::post('/cart', 'CartController@store')->name('cart.store');
+Route::get('/cart/reset', 'CartController@reset')->name('cart.reset');
+Route::delete('/cart/{product}', 'CartController@destroy')->name('cart.destroy');
 
 //Checkout
-Route::get('/checkout', 'HomeController@checkout')->name('checkout.index');
-Route::get('/checkout/success', 'HomeController@success')->name('checkout.success');
+Route::get('/checkout', 'CheckoutController@checkout')->name('checkout.index')->middleware('auth');
+Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
+Route::get('/checkout/success', 'CheckoutController@success')->name('checkout.success');
 
 //Orders
 Route::get('/orders', 'HomeController@orders')->name('orders');
